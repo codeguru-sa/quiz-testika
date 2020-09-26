@@ -1,0 +1,35 @@
+<app-nav-bar></app-nav-bar>
+
+<div id="wrap">
+    <div class="cube">
+      <section class="page active face front" id="home">
+        <div class="act-table text-center">
+          <div class="act-table-cell ver-middle">Home</div>
+          <p>Welcome {{username}}</p>
+        </div>
+      </section>
+      <section class="page face back" id="profile">
+        <div class="act-table text-center">
+          <div class="act-table-cell ver-middle">Profile</div>
+        </div>
+      </section>
+      <section class="page face top" id="takequiz">
+        <div class="act-table text-center">
+          <app-take-quiz></app-take-quiz>
+        </div>
+      </section>
+      <section class="page face right" id="contact">
+          <app-host-quiz></app-host-quiz>
+      </section>
+      <section class="page face bottom" id="blog">
+        <div class="act-table text-center">
+          <div class="act-table-cell ver-middle">blog Page</div>
+        </div>
+      </section>
+      <section class="page face left" id="article">
+        <div class="act-table text-center">
+          <div class="act-table-cell ver-middle">article Page</div>
+        </div>
+      </section>
+    </div>
+  </div>

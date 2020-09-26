@@ -1,0 +1,173 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="main">
+  <div class="hostform" *ngIf="!showForm">
+  <div class="">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="quizForm">
+                <div class="form-group">
+                    <label for="quizName">Quiz Catagory</label>
+                    <div class="form-group w-75">
+                                    {{currentSubject}}
+                    </div>
+                </div>
+             
+                    <div class="form-group">
+                        <label for="question">Write your Question</label>
+                        <textarea class="form-control" id="question" rows="3" formControlName="question"></textarea>
+                        <div *ngIf="question.touched && question.invalid" class="alert alert-danger">Question can't be empty.</div>
+                    </div>
+
+                    <div class="form-group w-50">
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="option1">Option 1</label>
+                                <input type="text" class="form-control" id="option1" placeholder="option1"
+                                    formControlName="option1">
+                                <div *ngIf="option1.touched && option1.invalid" class="alert alert-danger">option1 can't be empty.</div>
+                            </div>
+                            <div class="col">
+                                <label for="option2">Option 2</label>
+                                <input type="text" class="form-control" id="option2" placeholder="option2"
+                                    formControlName="option2">
+                                    <div *ngIf="option2.touched && option2.invalid" class="alert alert-danger">option2 can't be empty.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group w-50">
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="option3">Option 3</label>
+                                <input type="text" class="form-control" id="option3" placeholder="option3"
+                                    formControlName="option3">
+                                    <div *ngIf="option3.touched && option3.invalid" class="alert alert-danger">option3 can't be empty.</div>
+                            </div>
+                            <div class="col">
+                                <label for="option4">Option 4</label>
+                                <input type="text" class="form-control" id="option4" placeholder="option4"
+                                    formControlName="option4">
+                                    <div *ngIf="option4.touched && option4.invalid" class="alert alert-danger">option4 can't be empty.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <label for="questionType">Correct answer</label>
+                    <select class="form-control" id="questionType" formControlName="answer">
+                        <option value="" selected disabled>Please select</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <div *ngIf="answer.touched && answer.invalid" class="alert alert-danger">Should be one correct answer.</div>
+                    <div>
+                        <button class="btn btn-primary" type="submit" id="addQuestion" (click)="addQuestion()"  [disabled]="(quizForm.invalid)">Add Qustions</button>
+                        <button type="reset" class="btn btn-secondary" (click)="resetClick()">Reset</button>
+                    </div>
+               
+                <div>
+                    <button class="btn btn-primary" id="home" type="submit" 
+                        (click)=" cancelClick()" >Cancel</button>
+                    <button class="btn btn-primary" id="submitform"  type="submit"  (click)="onSubmit()" [disabled]="currentStatus">Submit form</button>
+
+                </div>
+            </form>
+        </div>
+        <div class="col-sm">
+            <ul class="list-group">
+                <li *ngFor="let obj of questionsArr; let i=index" class="list-group-item">
+                    <div>
+                    <span> {{ obj.question }} </span>
+                    <button class="btn btn-primary" (click)="deleteQuestion(i)" id="deleteButton">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<br/>
+</div>
+
+
+
+
+<div class="subject" *ngIf="showForm">
+  <ul ontouchstart>
+  <li>
+    <div class='link'>
+      <a  (click)="saveDbms()"></a>
+      <a  (click)="saveDbms()"></a>
+      <a  (click)="saveDbms()"></a>
+      <a  (click)="saveDbms()"></a>
+      <div class='cube codepen'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>
+          <img src="assets/images/icons-sql.png">
+        </div>
+        <div>DBMS</div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='link'>
+      <a  (click)="saveJava()"></a>
+      <a  (click)="saveJava()"></a>
+      <a  (click)="saveJava()"></a>
+      <a  (click)="saveJava()"></a>
+      <div class='cube github'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>
+          <img src="assets/images/icons8-java-50.png">
+        </div>
+        <div>JAVA</div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='link'>
+      <a (click)="saveAngular()"></a>
+      <a (click)="saveAngular()"></a>
+      <a (click)="saveAngular()"></a>
+      <a (click)="saveAngular()"></a>
+      <div class='cube codepen'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>
+          <img src="assets/images/icons-angularjs.png">
+        </div>
+        <div>ANGULAR</div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='link'>
+      <a (click)="saveC()"></a>
+      <a (click)="saveC()"></a>
+      <a (click)="saveC()"></a>
+      <a (click)="saveC()"></a>
+       <div class='cube github'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>
+          <img src="assets/images/icons-c-programming.png">
+        </div>
+        <div>C</div>
+      </div>
+    </div>
+  </li>
+  
+</ul>
+</div>
+</div>
